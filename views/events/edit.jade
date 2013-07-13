@@ -1,0 +1,65 @@
+extends ../layouts/default
+
+block content
+    .page
+    h2 Edit 
+    form.events#new(method='post')
+        input(type='hidden', value=event._id, name='event_id')
+        div
+            label Title:
+            input(name='event[title]', value=event.title || '', type='text')
+        div
+            label When:
+            input(name='event[when]', value=event.when.toISOString().slice(0, -1) || '', type='datetime-local')
+        div
+            label Where:
+            input(name='event[where]', value=event.where || '', type='text')
+        div
+            label Description:
+            textarea.input-xxlarge(name='event[description]', type='text')= event.description
+        div.row-fluid
+            h5 Invitations:
+            table.table.table-striped.invitations
+                tbody
+                    each attendee in invitations
+                        tr
+                            td
+                                span.name=attendee.name
+                            td
+                                span.email=attendee.email
+
+            div.form-horizontal
+                input.invite-name(type='text', placeholder="Name")
+                input.invite-email(type='text', placeholder="Email")
+                button.btn.btn-success.invite Add Invite
+        div
+          input.btn.btn-primary(type='submit', value='Save')  
+          &nbsp;
+          a(href='/events/' + event._id) Cancel
+
+block scripts
+    script(type='text/javascript')
+        $(function() {
+            $('.invite').on('click', function() {
+                var eventId = $('input[name=event_id]').val();
+                var inviteName = $('.invite-name').val();
+                var inviteEmail = $('.invite-email').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/events/'+ eventId +'/invitations',
+                    dataType: 'json',
+                    data: { name: inviteName, email: inviteEmail },
+                    success: function(result) {
+                        $('.invite-name').val('');
+                        $('.invite-email').val('');
+                        $('.invitations tbody').empty();
+                        var htmlArray = [];
+                        for(var i = 0; i < result.length; i++) {
+                            htmlArray.push('<tr><td>' + result[i].name + '</td><td>' + result[i].email + '</td></tr>');
+                        }
+                        $('.invitations tbody').append(htmlArray.join(''));
+                    }
+                });
+                return false;
+            });
+        });

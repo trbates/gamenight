@@ -1,0 +1,38 @@
+extends ../layouts/default
+
+block content
+    h2= event.title
+    div.row-fluid
+        div.span12
+            div.control-group
+                h5 When:
+                p=event.when
+            div.control-group
+                h5 Where:
+                p=event.where
+            div.control-group
+                h5 Description:
+                p=event.description
+            div.row-fluid
+                h5 Invitations:
+                if(invitations.length)
+                    table.table.table-striped.invitations
+                        tbody
+                            each attendee in invitations
+                                tr
+                                    td
+                                        span.name=attendee.name
+                                    td
+                                        span.email=attendee.email
+                else
+                    p Invite some friends!
+
+    div.row-fluid
+        &nbsp;
+    div.row-fluid
+        div.span3
+            a.btn(href='/events')
+                i.icon-chevron-left
+                | Back to Events
+        div.span3
+            a.btn(href='/events/edit/' + event._id) Edit

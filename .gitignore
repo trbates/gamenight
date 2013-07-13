@@ -1,3 +1,5 @@
+iisnode/
+web.config
 lib-cov
 *.seed
 *.log

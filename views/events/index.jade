@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block content
+    .page
+    h2 Events
+
+    .row-fluid
+        ul.unstyled
+            for event in events
+                li.lead
+                    a(href='events/' + event._id)= event.title
+            else
+                li.lead no events yet!
+    .row-fluid
+        a.btn(href='/event/new') Create a new event

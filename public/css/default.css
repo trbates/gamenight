@@ -1,0 +1,8 @@
+body {
+}
+.jumbotron {
+    position: :relative;
+    padding: 40px 0;
+    background: linear-gradient(45deg, #020031 0%, #6d4453 100%);
+    color: #fff;
+}

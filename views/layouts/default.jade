@@ -1,0 +1,22 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml')
+  include ../includes/head
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+            .container
+                .nav-collapse.collapse
+                    ul.nav
+                        li
+                            a(href='/') Home
+    header.jumbotron.subhead
+        .container
+            h1 GameNight
+            p Create an Event and invite people!
+    .container
+        block main
+        include ../includes/messages
+        block content
+    .push
+    include ../includes/foot
+    block scripts

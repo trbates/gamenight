@@ -1,0 +1,18 @@
+extends ../layouts/default
+
+block content
+    .page
+      h2 Register
+
+      form.users(method='post', action='/users')
+        div
+            label Email:
+            input(name='user[email]', value=user.email || '', type='text')
+
+        div
+            label Password:
+            input(name='user[password]', value=user.password || '', type='password')
+        div
+          input(type='submit', value='Register')
+          span | 
+            a(href='/login') Log In

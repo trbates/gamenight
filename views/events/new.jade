@@ -1,0 +1,22 @@
+extends ../layouts/default
+
+block content
+    .page
+    h2 New Event
+    form.events#new(method='post', action='/event/new')
+        div
+            label Title:
+            input(name='event[title]', value=event.title || '', type='text')
+        div
+            label When:
+            input(name='event[when]', value=event.when || '', type='datetime-local')
+        div
+            label Where:
+            input(name='event[where]', value=event.where || '', type='text')
+        div
+            label Description:
+            textarea.input-xxlarge(name='event[description]', value=event.description || '', type='text')
+        div
+          input(type='submit', value='Save')
+    div
+        a(href='/events') Back to Events

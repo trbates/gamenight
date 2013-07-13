@@ -1,0 +1,20 @@
+extends ../layouts/default
+
+block content
+    .page
+      h2 Log In
+      p
+        a.button(href='/signup') Create an account &rarr;
+      form.users#login(method='post', action='/login')
+        div
+          label Email:
+          input(name='user[email]', value=user.email || '', type='text')
+
+        div
+          label Password:
+          input(name='user[password]', value=user.password || '', type='password')
+        div
+          label(for='remember_me') Remember me:
+          input#remember_me(type='checkbox', name='remember_me')
+        div
+          input(type='submit', value='Log In')

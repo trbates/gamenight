@@ -1,0 +1,25 @@
+{
+  "name": "GameNight",
+  "version": "0.1.0",
+  "author": "Thomas Bates",
+  "description": "Web app for creating game night events and inviting friends by email",
+  "contributors": [ 
+    {
+      "name": "Thomas Bates",
+      "email": "thomas.r.bates@gmail.com"
+    } 
+  ],  
+  "main": "./server.js", 
+  "dependencies": {
+    "express": "3.2.x",
+    "jade": "0.31.x",
+    "express-messages-bootstrap": "1.0.0rc1",
+    "mongoose": "3.6.x"
+  },
+  "keywords": [],  
+  "noAnalyze": true,
+  "license": "Apache",
+  "engines": {
+    "node": ">=0.6.14"
+  }
+}
